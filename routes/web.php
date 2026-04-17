@@ -26,10 +26,11 @@ Route::prefix('prototype')->name('prototype.')->group(function () {
     route::get('/register', function () {
         return Inertia::render('prototype/register');
     })->name('register');
+
+    route::get('/dashboard', function () {
+        return Inertia::render('prototype/dashboard');
+    })->name('dashboard');
 });
-
-
-
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::inertia('dashboard', 'dashboard')->name('dashboard');
