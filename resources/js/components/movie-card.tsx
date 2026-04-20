@@ -1,3 +1,6 @@
+import { Link } from '@inertiajs/react';
+import { show } from '@/routes/prototype/movie';
+
 export default function MovieCard({
     slug,
     name,
@@ -27,9 +30,9 @@ export default function MovieCard({
             <div className="-translate-y-125transition absolute top-1/2 left-1/2 z-20 -translate-x-1/2 duration-500 ease-in-out group-hover:-translate-y-1/2">
                 <img src="/icons/ic_play.svg" className="" width="50" alt="" />
             </div>
-            <a href={slug} className="absolute inset-0 z-50">
+            <Link href={show(slug)} className="absolute inset-0 z-50">
                 {slug}
-            </a>
+            </Link>
         </div>
     );
 }

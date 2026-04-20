@@ -1,3 +1,6 @@
+import { Link } from '@inertiajs/react';
+import { show } from '@/routes/prototype/movie';
+
 export default function FeaturedMovies({
     slug,
     name,
@@ -39,9 +42,9 @@ export default function FeaturedMovies({
                     <img src="/icons/ic_play.svg" width="50" alt="" />
                 </div>
             </div>
-            <a href={slug} className="absolute inset-0 z-50">
+            <Link href={show(slug)} className="absolute inset-0 z-50">
                 {slug}
-            </a>
+            </Link>
         </div>
     );
 }

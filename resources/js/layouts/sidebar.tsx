@@ -1,5 +1,5 @@
 import { Link } from '@inertiajs/react';
-import { subscriptionPlan } from '@/routes/prototype';
+import { subscriptionPlan, dashboard } from '@/routes/prototype';
 
 export default function Sidebar() {
     return (
@@ -11,7 +11,7 @@ export default function Sidebar() {
                 <div className="links mt-15 flex h-full flex-col gap-12.5">
                     <div>
                         <div className="mb-4 text-sm text-gray-1">Menu</div>
-                        <a href="/" className="side-link active">
+                        <Link href={dashboard()} className="side-link active">
                             <svg
                                 width="24"
                                 height="24"
@@ -29,7 +29,7 @@ export default function Sidebar() {
                                 </g>
                             </svg>
                             Discover
-                        </a>
+                        </Link>
                         <a href="#!" className="side-link">
                             <svg
                                 width="24"

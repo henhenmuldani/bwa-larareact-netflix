@@ -39,8 +39,8 @@ export default function Dashboard() {
                     {[1, 2, 3, 4].map((index) => (
                         <FeaturedMovies
                             key={index}
-                            slug=""
-                            name=""
+                            slug="batman"
+                            name="batman"
                             thumbnail=""
                             category=""
                             rating={1}
