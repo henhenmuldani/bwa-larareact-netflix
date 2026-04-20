@@ -1,19 +1,44 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Inertia\Inertia;
 use Laravel\Fortify\Features;
 
-Route::get('admin', function () {
-    return 'Hi Admin';
-})->middleware('role:admin');
+// Route::get('admin', function () {
+//     return 'Hi Admin';
+// })->middleware('role:admin');
 
-Route::get('user', function () {
-    return 'Hi User';
-})->middleware('role:user');
+// Route::get('user', function () {
+//     return 'Hi User';
+// })->middleware('role:user');
 
-Route::inertia('/', 'welcome', [
-    'canRegister' => Features::enabled(Features::registration()),
-])->name('home');
+// Route::inertia('/', 'welcome', [
+//     'canRegister' => Features::enabled(Features::registration()),
+// ])->name('home');
+
+Route::redirect('/', '/prototype/login');
+
+Route::prefix('prototype')->name('prototype.')->group(function () {
+    route::get('/login', function () {
+        return Inertia::render('prototype/login');
+    })->name('login');
+
+    route::get('/register', function () {
+        return Inertia::render('prototype/register');
+    })->name('register');
+
+    route::get('/dashboard', function () {
+        return Inertia::render('prototype/dashboard');
+    })->name('dashboard');
+
+    route::get('/subscription-plan', function () {
+        return Inertia::render('prototype/subscription-plan');
+    })->name('subscription-plan');
+
+    route::get('/movie/{slug}', function () {
+        return Inertia::render('prototype/movie/show');
+    })->name('movie.show');
+});
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::inertia('dashboard', 'dashboard')->name('dashboard');

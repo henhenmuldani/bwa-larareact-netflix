@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
 @import 'tailwindcss';
 
 @import 'tw-animate-css';
@@ -8,6 +10,17 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme {
+    --font-poppins: 'Poppins', sans-serif;
+    /* --- Colors --- */
+    --color-alerange: #fb6908;
+    --color-gray-1: #b4b4b4;
+    --color-gray-2: #e2e0e0;
+    --color-form-bg: #212121;
+
+    /* --- Breakpoints (Screens) --- */
+    --breakpoint-laptopLg: 1160px;
+    --breakpoint-laptopXl: 1360px;
+
     --font-sans:
         'Instrument Sans', ui-sans-serif, system-ui, sans-serif,
         'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
@@ -138,6 +151,27 @@
     }
 
     body {
-        @apply bg-background text-foreground;
+        @apply flex bg-background text-foreground before:hidden! after:hidden!;
+    }
+}
+
+@layer components {
+    .side-link {
+        @apply mb-5 flex w-full items-center gap-3 text-sm font-normal text-black transition-all;
+    }
+
+    .side-link svg {
+        @apply text-[#B7B7B7];
+    }
+    .side-link.active {
+        @apply border-r-[3px] border-alerange font-semibold;
+    }
+
+    .side-link.active svg {
+        @apply text-alerange;
+    }
+
+    input.top-search {
+        @apply w-full max-w-142.5 rounded-full border border-gray-2 bg-center bg-no-repeat px-5 py-2.75 text-base text-gray-1 transition-all placeholder:text-gray-1 focus:ring-2 focus:outline-none;
     }
 }
