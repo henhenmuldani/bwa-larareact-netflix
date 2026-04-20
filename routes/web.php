@@ -30,6 +30,10 @@ Route::prefix('prototype')->name('prototype.')->group(function () {
     route::get('/dashboard', function () {
         return Inertia::render('prototype/dashboard');
     })->name('dashboard');
+
+    route::get('/subscription-plan', function () {
+        return Inertia::render('prototype/subscription-plan');
+    })->name('subscription-plan');
 });
 
 Route::middleware(['auth', 'verified'])->group(function () {

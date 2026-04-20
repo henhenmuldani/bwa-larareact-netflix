@@ -1,3 +1,6 @@
+import { Link } from '@inertiajs/react';
+import { subscriptionPlan } from '@/routes/prototype';
+
 export default function Sidebar() {
     return (
         <aside className="fixed z-50 h-full w-75">
@@ -79,7 +82,7 @@ export default function Sidebar() {
 
                     <div>
                         <div className="side-link mb-4 text-gray-1">Others</div>
-                        <a href="pricing.html" className="side-link">
+                        <Link href={subscriptionPlan()} className="side-link">
                             <svg
                                 width="24"
                                 height="24"
@@ -94,7 +97,7 @@ export default function Sidebar() {
                                 />
                             </svg>
                             Payments
-                        </a>
+                        </Link>
                         <a href="#!" className="side-link">
                             <svg
                                 width="24"
