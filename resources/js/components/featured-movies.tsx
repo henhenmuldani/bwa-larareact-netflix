@@ -1,5 +1,5 @@
 import { Link } from '@inertiajs/react';
-import { show } from '@/routes/prototype/movie';
+import { show } from '@/routes/user/dashboard/movie';
 
 export default function FeaturedMovies({
     slug,
