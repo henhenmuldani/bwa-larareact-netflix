@@ -6,6 +6,7 @@ import InputError from '@/components/input-error';
 import { Spinner } from '@/components/ui/spinner';
 import { login } from '@/routes';
 import { store } from '@/routes/register';
+import PasswordInput from '@/components/password-input';
 
 export default function Register() {
     return (
@@ -90,9 +91,8 @@ export default function Register() {
                                             >
                                                 Password
                                             </Label>
-                                            <Input
+                                            <PasswordInput
                                                 id="password"
-                                                type="password"
                                                 name="password"
                                                 className="w-full rounded-2xl bg-form-bg px-7 py-3.25 focus:outline-alerange focus:outline-none"
                                                 placeholder="Your Password"
@@ -110,9 +110,8 @@ export default function Register() {
                                             >
                                                 Confirm Password
                                             </Label>
-                                            <Input
+                                            <PasswordInput
                                                 id="password_confirmation"
-                                                type="password"
                                                 name="password_confirmation"
                                                 className="w-full rounded-2xl bg-form-bg px-7 py-3.25 focus:outline-alerange focus:outline-none"
                                                 placeholder="Confirm Password"
@@ -131,6 +130,7 @@ export default function Register() {
                                             type="submit"
                                             className="w-full rounded-2xl bg-alerange py-3.25 text-center hover:bg-alerange/90"
                                             tabIndex={5}
+                                            disabled={processing}
                                         >
                                             {processing && <Spinner />}
                                             <span className="text-base text-white">

@@ -16,7 +16,7 @@ use Laravel\Fortify\Features;
 //     'canRegister' => Features::enabled(Features::registration()),
 // ])->name('home');
 
-Route::redirect('/', '/prototype/login');
+Route::redirect('/', '/login');
 
 Route::prefix('prototype')->name('prototype.')->group(function () {
     route::get('/login', function () {
