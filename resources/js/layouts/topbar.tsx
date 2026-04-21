@@ -1,6 +1,9 @@
 import { useState, useRef } from 'react';
+import { logout } from '@/routes';
+import { Link, router } from '@inertiajs/react';
+import { useMobileNavigation } from '@/hooks/use-mobile-navigation';
 
-export default function Topbar() {
+export default function Topbar({ name }: { name: string }) {
     const [dropdownOpen, setDropdownOpen] = useState(false);
     // Added type generic and null initial value
     const dropdownTarget = useRef<HTMLDivElement>(null);
@@ -17,6 +20,13 @@ export default function Topbar() {
         setDropdownOpen(!dropdownOpen);
     };
 
+    const cleanup = useMobileNavigation();
+
+    const handleLogout = () => {
+        cleanup();
+        router.flushAll();
+    };
+
     return (
         <div className="flex items-center justify-between">
             <input
@@ -31,16 +41,16 @@ export default function Topbar() {
             {/* <div style={{}}></div> */}
             <div className="flex items-center gap-4">
                 <span className="text-sm font-medium text-black">
-                    Welcome, Granola Sky
+                    Welcome, {name}
                 </span>
-                <div className="collapsible-dropdown relative flex flex-col gap-2">
+                <div className="relative flex flex-col gap-2 collapsible-dropdown">
                     <button
                         className="dropdown-button w-15 cursor-pointer rounded-full p-1.25 outline-2 outline-gray-2"
                         onClick={triggerDropdown}
                     >
                         <img
                             src="/images/avatar.png"
-                            className="w-full rounded-full object-cover"
+                            className="object-cover w-full rounded-full"
                             alt=""
                         />
                     </button>
@@ -61,12 +71,15 @@ export default function Topbar() {
                         >
                             Settings
                         </a>
-                        <a
-                            href="sign_in.html"
-                            className="p-4 transition-all hover:bg-sky-100"
+
+                        <Link
+                            href={logout()}
+                            as="button"
+                            onClick={handleLogout}
+                            className="p-4 text-left transition-all cursor-pointer hover:bg-sky-100"
                         >
                             Sign Out
-                        </a>
+                        </Link>
                     </div>
                 </div>
             </div>

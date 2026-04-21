@@ -2,8 +2,10 @@ import Sidebar from './sidebar';
 import Topbar from './topbar';
 
 export default function AuthLayout({
+    auth,
     children,
 }: {
+    auth: any;
     children: React.ReactNode;
 }) {
     return (
@@ -13,20 +15,20 @@ export default function AuthLayout({
                 <h1>wakwaw</h1>
             </div> */}
 
-            <div className="mx-auto hidden min-w-screen lg:block">
+            <div className="hidden mx-auto min-w-screen lg:block">
                 {/* Start Sidebar */}
                 <Sidebar />
                 {/* End Sidebar */}
                 {/* Start Content */}
                 <div className="ml-75 flex flex-col gap-12.5 px-12.5 py-10">
-                    <Topbar />
+                    <Topbar name={auth.user.name} />
                     <main>{children}</main>
                 </div>
 
                 {/* End Content */}
             </div>
-            <div className="mx-auto flex h-screen w-full bg-black px-4 lg:hidden">
-                <div className="my-auto text-center text-2xl leading-snug font-medium text-white">
+            <div className="flex w-full h-screen px-4 mx-auto bg-black lg:hidden">
+                <div className="my-auto text-2xl font-medium leading-snug text-center text-white">
                     Sorry, this page only supported on 1024px screen or above
                 </div>
             </div>

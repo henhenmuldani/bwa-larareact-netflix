@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use Laravel\Fortify\Features;
+use App\Http\Controllers\User\DashboardController;
 
 // Route::get('admin', function () {
 //     return 'Hi Admin';
@@ -40,8 +41,16 @@ Route::prefix('prototype')->name('prototype.')->group(function () {
     })->name('movie.show');
 });
 
+// Route::middleware(['auth', 'verified'])->group(function () {
+//     // Route::inertia('dashboard', 'dashboard')->name('dashboard');
+//     // Route::inertia('dashboard', 'user/dashboard')->name('dashboard');
+// });
+
 Route::middleware(['auth', 'verified'])->group(function () {
-    Route::inertia('dashboard', 'dashboard')->name('dashboard');
+    Route::middleware('role:user')->prefix('dashboard')->name('user.dashboard.')->group(function () {
+        Route::get('/', [DashboardController::class, 'index'])->name('index');
+        // Route::inertia('/', [DashboardController::class, 'index'])->name('index');
+    });
 });
 
 require __DIR__ . '/settings.php';
