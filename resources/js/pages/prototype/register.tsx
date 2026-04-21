@@ -7,7 +7,7 @@ export default function Register() {
     return (
         <>
             <Head title="Register" />
-            <div className="min-h-screen px-3 mx-auto text-white bg-black max-w-screen md:px-10">
+            <div className="min-h-screen px-3 mx-auto text-white bg-black min-w-screen md:px-10">
                 <div className="fixed -top-12.5 hidden lg:block">
                     <img
                         src="/images/signup-image.png"
@@ -70,7 +70,7 @@ export default function Register() {
                                 <Link href="/">
                                     <Button
                                         type="button"
-                                        className="w-full rounded-2xl bg-alerange py-3.25 text-center"
+                                        className="w-full rounded-2xl bg-alerange py-3.25 text-center hover:bg-alerange/90"
                                     >
                                         <span className="text-base text-white">
                                             Sign Up
@@ -81,8 +81,7 @@ export default function Register() {
                                 <Link href="/prototype/login">
                                     <Button
                                         type="button"
-                                        variant={'outline'}
-                                        className="w-full rounded-2xl py-3.25 text-center"
+                                        className="w-full rounded-2xl border border-[#767676] py-3.25 text-center hover:bg-[#767676] hover:text-white"
                                     >
                                         <span className="text-base text-white">
                                             Sign In to My Account
